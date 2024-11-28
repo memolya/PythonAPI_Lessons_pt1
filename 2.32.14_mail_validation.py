@@ -1,4 +1,5 @@
 mail_data = {'address': 'test@test.ru', 'subject': 'Спец.письмо', 'text': 'Царский указ'}
+address, subject, text = "", "", "" #инициализация вне блока try-except для большей читаемости
 
 try:
     address, subject, text = input(), input(), input()
@@ -14,9 +15,28 @@ def check_mail(address, subject, text):
 
     #Значение из словаря mail_data['address'] (в данном случае 'test@test.ru') сравнивается с пользовательским вводом, сохранённым в переменной address.
     #Аналогично, mail_data['subject'] извлекает значение по ключу 'subject' ('Спец.письмо' в данном словаре) и сравнивается с переменной subject.
-    if mail_data['address'] == address and mail_data['subject'] == subject:
+    if address and subject and address == mail_data['address'] and subject == mail_data['subject'] and (text == mail_data['text'] or not text):
         return 'Good'
     else:
         return 'Bad'
 
 print(check_mail(address, subject, text))
+
+#
+# mail_data = {'address': 'test@test.ru', 'subject': 'Спец.письмо', 'text': 'Царский указ'}
+#
+# def safe_input(prompt=''):
+#     try:
+#         return input(prompt).strip()
+#     except EOFError:
+#         return ''
+#
+#
+# use1 = input()
+# use2 = input()
+# use3 = safe_input()
+#
+# if use1 == mail_data['address'] and use2 == mail_data['subject'] and (use3 == mail_data['text'] or not use3):
+#     print("Good")
+# else:
+#     print("Bad")
